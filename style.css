@@ -15,7 +15,9 @@
   background: grey;
   float: left;
   margin: 2px;
-  font-size: 32px;
+  font-family: fantasy;
+  font-size: 60px;
+  color: #333138;
   display: flex;
   justify-content: center;
   align-items: center;

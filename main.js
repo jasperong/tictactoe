@@ -55,6 +55,9 @@ $(document).on('ready', function(){
       winMessage('o');
     } else if (sqr3.text() == "O" && sqr5.text() == "O" && sqr7.text() == "O") {
       winMessage('o');
+    } else if (turn == 9) {
+      alert("Its a draw!");
+      reset();
     }
   }
 
