@@ -18,10 +18,11 @@ $(document).on('ready', function(){
     if ($(this).text() == " ") {
       // Player script
       $(this).text("X").removeClass("unclicked");
+      turn++;
       // AI script
       $($('.unclicked')[Math.floor(Math.random() * $('.unclicked').length)]).text("O").removeClass("unclicked");
-    }
       turn++;
+    }
       checkWin();
   });
 
@@ -59,7 +60,7 @@ $(document).on('ready', function(){
       winMessage('o');
     } else if (sqr3.text() == "O" && sqr5.text() == "O" && sqr7.text() == "O") {
       winMessage('o');
-    } else if (turn == 9) {
+    } else if (turn >= 9) {
       // if no one matches 3, draw
       alert("Its a draw!");
       reset();
