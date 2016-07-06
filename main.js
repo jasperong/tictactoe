@@ -10,14 +10,18 @@ $(document).on('ready', function(){
   var sqr8 = $('#sqr8');
   var sqr9 = $('#sqr9');
 
-  // if player clicks box, either x for turn odd or o for turn even
   var turn = 0;
+  // var unclicked = $('.unclicked');
+  // var randomUnclicked = Math.floor(Math.random() * $('unclicked').length + 1);
+  // if player clicks box, either x for turn odd or o for turn even
   $('.box').on('click', function(){
-    if (turn % 2 == 0 && $(this).text() == " ") {
-      $(this).text("X");
-    } else if (turn % 2 != 0 && $(this).text() == " "){
-      $(this).text("O");
-    } turn++;
+    if ($(this).text() == " ") {
+      // Player script
+      $(this).text("X").removeClass("unclicked");
+      // AI script
+      $($('.unclicked')[Math.floor(Math.random() * $('.unclicked').length)]).text("O").removeClass("unclicked");
+    }
+      turn++;
       checkWin();
   });
 
@@ -56,6 +60,7 @@ $(document).on('ready', function(){
     } else if (sqr3.text() == "O" && sqr5.text() == "O" && sqr7.text() == "O") {
       winMessage('o');
     } else if (turn == 9) {
+      // if no one matches 3, draw
       alert("Its a draw!");
       reset();
     }
@@ -73,8 +78,9 @@ $(document).on('ready', function(){
 
   function reset() {
     $('.box').text(" ");
+    turn = 0;
+    $('.box').addClass("unclicked");
   }
 
-  // if no one matches 3, draw
 
 });
