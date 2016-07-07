@@ -14,11 +14,11 @@ $(document).on('ready', function(){
   });
   // if 3 boxes match x/o, player wins
   function checkWin() {
-    if ($('.row2').text() === "XXX" || $('.row1').text() === "XXX" || $('.row3').text() === "XXX" ||
+    if ($('.row1').text() === "XXX" || $('.row2').text() === "XXX" || $('.row3').text() === "XXX" ||
         $('.column1').text() === "XXX" || $('.column2').text() === "XXX" || $('.column3').text() === "XXX" ||
         $('.diag1').text() === "XXX" || $('.diag2').text() === "XXX") {
       winMessage('x');
-    } else if ($('.row2').text() === "OOO" || $('.row1').text() === "OOO" || $('.row3').text() === "OOO" ||
+    } else if ($('.row1').text() === "OOO" || $('.row2').text() === "OOO" || $('.row3').text() === "OOO" ||
         $('.column1').text() === "OOO" || $('.column2').text() === "OOO" || $('.column3').text() === "OOO" ||
         $('.diag1').text() === "OOO" || $('.diag2').text() === "OOO") {
       winMessage('o');
@@ -26,7 +26,7 @@ $(document).on('ready', function(){
         alert("Its a draw!");
         reset();
       }
-    }
+    };
   // Check who wins and show an alert
   function winMessage(letter) {
     if (letter == 'x') {
