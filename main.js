@@ -1,18 +1,5 @@
 $(document).on('ready', function(){
-  // define variables
-  var sqr1 = $('#sqr1');
-  var sqr2 = $('#sqr2');
-  var sqr3 = $('#sqr3');
-  var sqr4 = $('#sqr4');
-  var sqr5 = $('#sqr5');
-  var sqr6 = $('#sqr6');
-  var sqr7 = $('#sqr7');
-  var sqr8 = $('#sqr8');
-  var sqr9 = $('#sqr9');
-
   var turn = 0;
-  // var unclicked = $('.unclicked');
-  // var randomUnclicked = Math.floor(Math.random() * $('unclicked').length + 1);
   // if player clicks box, either x for turn odd or o for turn even
   $('.box').on('click', function(){
     if ($(this).text() == " ") {
@@ -25,48 +12,22 @@ $(document).on('ready', function(){
     }
       checkWin();
   });
-
   // if 3 boxes match x/o, player wins
   function checkWin() {
-    if (sqr1.text() == "X" && sqr2.text() == "X" && sqr3.text() == "X") {
+    if ($('.row2').text() === "XXX" || $('.row1').text() === "XXX" || $('.row3').text() === "XXX" ||
+        $('.column1').text() === "XXX" || $('.column2').text() === "XXX" || $('.column3').text() === "XXX" ||
+        $('.diag1').text() === "XXX" || $('.diag2').text() === "XXX") {
       winMessage('x');
-    } else if (sqr4.text() == "X" && sqr5.text() == "X" && sqr6.text() == "X") {
-      winMessage('x');
-    } else if (sqr7.text() == "X" && sqr8.text() == "X" && sqr9.text() == "X") {
-      winMessage('x');
-    } else if (sqr1.text() == "X" && sqr4.text() == "X" && sqr7.text() == "X") {
-      winMessage('x');
-    } else if (sqr2.text() == "X" && sqr5.text() == "X" && sqr8.text() == "X") {
-      winMessage('x');
-    } else if (sqr3.text() == "X" && sqr6.text() == "X" && sqr9.text() == "X") {
-      winMessage('x');
-    } else if (sqr1.text() == "X" && sqr5.text() == "X" && sqr9.text() == "X") {
-      winMessage('x');
-    } else if (sqr3.text() == "X" && sqr5.text() == "X" && sqr7.text() == "X") {
-      winMessage('x');
-    } else if (sqr1.text() == "O" && sqr2.text() == "O" && sqr3.text() == "O") {
-      winMessage('o');
-    } else if (sqr4.text() == "O" && sqr5.text() == "O" && sqr6.text() == "O") {
-      winMessage('o');
-    } else if (sqr7.text() == "O" && sqr8.text() == "O" && sqr9.text() == "O") {
-      winMessage('o');
-    } else if (sqr1.text() == "O" && sqr4.text() == "O" && sqr7.text() == "O") {
-      winMessage('o');
-    } else if (sqr2.text() == "O" && sqr5.text() == "O" && sqr8.text() == "O") {
-      winMessage('o');
-    } else if (sqr3.text() == "O" && sqr6.text() == "O" && sqr9.text() == "O") {
-      winMessage('o');
-    } else if (sqr1.text() == "O" && sqr5.text() == "O" && sqr9.text() == "O") {
-      winMessage('o');
-    } else if (sqr3.text() == "O" && sqr5.text() == "O" && sqr7.text() == "O") {
+    } else if ($('.row2').text() === "OOO" || $('.row1').text() === "OOO" || $('.row3').text() === "OOO" ||
+        $('.column1').text() === "OOO" || $('.column2').text() === "OOO" || $('.column3').text() === "OOO" ||
+        $('.diag1').text() === "OOO" || $('.diag2').text() === "OOO") {
       winMessage('o');
     } else if (turn >= 9) {
-      // if no one matches 3, draw
-      alert("Its a draw!");
-      reset();
+        alert("Its a draw!");
+        reset();
+      }
     }
-  }
-
+  // Check who wins and show an alert
   function winMessage(letter) {
     if (letter == 'x') {
       alert("Player X wins!");
@@ -76,12 +37,10 @@ $(document).on('ready', function(){
       reset();
     };
   }
-
+  // Resets the grid when someone wins or if both players draw
   function reset() {
     $('.box').text(" ");
     turn = 0;
     $('.box').addClass("unclicked");
   }
-
-
 });
